@@ -1,11 +1,9 @@
 import dayjs from "dayjs";
 import { openingHours } from "../../utils/opening-hours.js";
 
-
-const hours = document.getElementById("hours")
+const hours = document.getElementById("hours");
 
 export function hoursLoad({ date }) {
-  console.log(date);
   const opening = openingHours.map((hour) => {
     //Recupera somente a hora
     const [scheuduleHour] = hour.split(":");
@@ -23,10 +21,27 @@ export function hoursLoad({ date }) {
     const li = document.createElement("li");
 
     li.classList.add("hour");
-    li.classList.add(available ? "hour-available" : "hour-unavaible")
+    li.classList.add(available ? "hour-available" : "hour-unavaible");
 
-    li.textContent = hour
+    li.textContent = hour;
 
-    hours.append(li)
+    if (hour === "9:00") {
+      hourHeaderAdd("Manhã");
+    } else if (hour === "13:00") {
+      hourHeaderAdd("Tarde");
+    }else if(hour === "18:00"){
+      hourHeaderAdd("Noite");
+
+    }
+
+    hours.append(li);
   });
+}
+
+function hourHeaderAdd(title) {
+  const header = document.createElement("li");
+  header.classList.add("hour-period");
+  header.textContent = title;
+
+  hours.append(header);
 }
