@@ -13,4 +13,4 @@ import dayjs  from "dayjs"
 
 //JS
 import "./modules/form/submit.js"
-import "./modules/load.js"
+import "./modules/page-load.js"
