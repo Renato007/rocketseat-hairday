@@ -3,7 +3,7 @@ import {apiConfig} from "./api-config.js"
 export async function scheduleNew({id, name, when}) {
     try {
         //Requisição da API apontando a rota/recurso
-        await fetch(`${apiConfig.baseURL}/schedule`, {
+        await fetch(`${apiConfig.baseURL}/schedules`, {
             //ação
             method: "POST",
 
@@ -17,7 +17,7 @@ export async function scheduleNew({id, name, when}) {
 
         alert("Agendamento realizado com sucesso!")
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         alert("Não foi possível agendar. Tente novamente mais tarde.")
         
     }
